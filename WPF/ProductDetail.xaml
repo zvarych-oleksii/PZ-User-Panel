@@ -1,0 +1,12 @@
+﻿<Window x:Class="WPF.ProductDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Product Detail" Height="400" Width="600">
+    <Grid>
+        <!-- Add your UI elements for displaying detailed product information -->
+        <TextBlock Text="{Binding ProductName}" />
+        <TextBlock Text="{Binding ProductDescription}" />
+        <TextBlock Text="{Binding Price}" />
+        <TextBlock Text="{Binding Category}" />
+    </Grid>
+</Window>
