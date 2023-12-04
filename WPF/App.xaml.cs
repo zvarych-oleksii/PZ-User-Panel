@@ -1,20 +1,16 @@
-﻿using System.Windows;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
+﻿using BusinessLogic.BL;
 using BusinessLogic.IBL;
-using BusinessLogic.BL;
 using DAL.Context;
+using DAL.Data.IModels;
 using DAL.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using WPF.ViewModels;
-using WPF.Windows;
+using System.Windows;
 using Unity;
-using DAL.Data.IModels;
 using Unity.Injection;
 using Unity.Lifetime;
+using WPF.ViewModels;
+using WPF.Windows;
 
 namespace WPF
 {
@@ -27,10 +23,16 @@ namespace WPF
 
             base.OnStartup(e);
             RegisterUnity();
-            ProductList pl = Container.Resolve<ProductList>();
-            Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
-            Current.MainWindow = pl;
-            pl.Show();
+            LoginView lf = Container.Resolve<LoginView>();
+            bool? result = lf.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                ProductList pl = Container.Resolve<ProductList>();
+                Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
+                Current.MainWindow = pl;
+                pl.Show();
+            }
 
         }
 
@@ -67,6 +69,7 @@ namespace WPF
 
             // Register view models
             Container.RegisterType<ProductListViewModel>(new HierarchicalLifetimeManager());
+            Container.RegisterType<LoginViewModel>(new HierarchicalLifetimeManager());
             // Add other registrations as needed
         }
 

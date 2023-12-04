@@ -24,29 +24,37 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!--<DataGrid Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Path=MovieList}"-->
         <DataGrid Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource ProductCollection}}" 
-           x:Name="dgMovies"
-           AutoGenerateColumns="False"
-           SelectionMode="Single"
-           SelectionUnit="FullRow"
-           GridLinesVisibility="Horizontal"
-           CanUserDeleteRows="False"
-           CanUserAddRows="False" 
-           CanUserResizeRows="False"
-                >
+          x:Name="dgMovies"
+          AutoGenerateColumns="False"
+          SelectionMode="Single"
+          SelectionUnit="FullRow"
+          GridLinesVisibility="Horizontal"
+          CanUserDeleteRows="False"
+          CanUserAddRows="False" 
+          CanUserResizeRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="SizeToCells" IsReadOnly="True" MinWidth="40" Binding="{Binding ProductName}" />
+                <DataGridTextColumn Header="Product Name" Width="SizeToCells" IsReadOnly="True" MinWidth="40" Binding="{Binding ProductName}" />
+                <DataGridTextColumn Header="Price" Width="SizeToCells" IsReadOnly="True" MinWidth="40" Binding="{Binding Price}" />
+                <DataGridTextColumn Header="Quantity" Width="SizeToCells" IsReadOnly="True" MinWidth="40" Binding="{Binding Quantity}" />
+                <DataGridTextColumn Header="Category" Width="SizeToCells" IsReadOnly="True" MinWidth="40" Binding="{Binding Category.CategoryName}" />
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Detail" Click="DetailButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Buy" Click="BuyButton_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
-            <DataGrid.CellStyle>
-                <Style TargetType="DataGridCell">
-                    <Style.Triggers>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="BorderThickness" Value="0"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.CellStyle>
         </DataGrid>
     </Grid>
 </Window>
