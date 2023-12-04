@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WPF
+namespace WPF_APP
 {
     /// <summary>
-    /// Interaction logic for UserDetail.xaml
+    /// Interaction logic for ProductList.xaml
     /// </summary>
-    public partial class UserDetail : Window
+    public partial class ProductList : Window
     {
-        public UserDetail()
+        public ProductList()
         {
             InitializeComponent();
         }

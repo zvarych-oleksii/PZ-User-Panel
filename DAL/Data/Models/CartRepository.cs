@@ -1,8 +1,8 @@
-﻿using DTO_Core.Models;
-using PZ_User_Panel_console.Context;
-using PZ_User_Panel_console.Data.IModels;
+﻿using DAL.Context;
+using DAL.Data.IModels;
+using DTO_Core.Models;
 
-namespace PZ_User_Panel_console.Data.Models
+namespace DAL.Data.Models
 {
     public class CartRepository : ICartRepository
     {

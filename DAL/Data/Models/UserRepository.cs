@@ -1,13 +1,15 @@
 ﻿using DTO_Core.Models;
-using PZ_User_Panel_console.Context;
-using PZ_User_Panel_console.Data.IModels;
+using DAL.Context;
+using DAL.Data.IModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection.Metadata.Ecma335;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
-namespace PZ_User_Panel_console.Data.Models
+namespace DAL.Data.Models
 {
     public class UserRepository : IUserRepository
     {
@@ -23,13 +25,13 @@ namespace PZ_User_Panel_console.Data.Models
             _dbContext.User_.Add(user);
             _dbContext.SaveChanges();
         }
-        public User GetUserByUsername(string username) 
+        public User GetUserByUsername(string username)
         {
-            return _dbContext.User_.FirstOrDefault(u => u.UserName == username);
+            return _dbContext.User_.SingleOrDefault(u => u.UserName == username);
         }
         public User GetUserById(int userId)
         {
-            return _dbContext.User_.FirstOrDefault(u => u.UserId == userId);
+            return _dbContext.User_.SingleOrDefault(u => u.UserId == userId);
         }
 
         public List<User> GetAllUsers()

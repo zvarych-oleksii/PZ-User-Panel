@@ -4,9 +4,9 @@ namespace BusinessLogic.IBL
 {
     public interface ICartBL
     {
-        void AddCart();
-        void DeleteCart();
-        void UpdateCart();
+        void AddCart(Cart cart);
+        void DeleteCart(int cartId);
+        void UpdateCart(Cart cart);
         List<Cart> GetAllCarts();
     }
 }

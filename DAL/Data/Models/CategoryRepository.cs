@@ -1,13 +1,8 @@
-﻿using DTO_Core.Models;
-using PZ_User_Panel_console.Context;
-using PZ_User_Panel_console.Data.IModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DAL.Context;
+using DAL.Data.IModels;
+using DTO_Core.Models;
 
-namespace PZ_User_Panel_console.Data.Models
+namespace DAL.Data.Models
 {
     public class CategoryRepository : ICategoryRepository
     {

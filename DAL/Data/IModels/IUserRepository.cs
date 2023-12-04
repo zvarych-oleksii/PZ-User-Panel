@@ -1,6 +1,6 @@
 ﻿using DTO_Core.Models;
 
-namespace PZ_User_Panel_console.Data.IModels
+namespace DAL.Data.IModels
 {
     public interface IUserRepository
     {

@@ -1,0 +1,52 @@
+﻿<Window x:Class="WPF.Windows.ProductList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:local="clr-namespace:WPF.Windows"
+        mc:Ignorable="d"
+        Title="Product List" Height="600" Width="1000">
+    <Window.Resources>
+        <CollectionViewSource 
+                  Source="{Binding Path=ProductList}"   
+                  x:Key="ProductCollection" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--<DataGrid Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Path=MovieList}"-->
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding Source={StaticResource ProductCollection}}" 
+           x:Name="dgMovies"
+           AutoGenerateColumns="False"
+           SelectionMode="Single"
+           SelectionUnit="FullRow"
+           GridLinesVisibility="Horizontal"
+           CanUserDeleteRows="False"
+           CanUserAddRows="False" 
+           CanUserResizeRows="False"
+                >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="SizeToCells" IsReadOnly="True" MinWidth="40" Binding="{Binding ProductName}" />
+            </DataGrid.Columns>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="BorderThickness" Value="0"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+    </Grid>
+</Window>

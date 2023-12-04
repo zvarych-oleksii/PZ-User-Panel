@@ -9,9 +9,9 @@ namespace BusinessLogic.IBL
 {
     public interface ICategoryBL
     {
-        void AddCategory();
-        void DeleteCategory();
-        void UpdateCategory();
+        void AddCategory(Category category);
+        void DeleteCategory(int categoryId);
+        void UpdateCategory(Category category);
         List<Category> GetCategories();
         Category GetCategory(int id);
     }

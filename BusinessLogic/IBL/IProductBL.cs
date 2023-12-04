@@ -4,11 +4,11 @@ namespace BusinessLogic.IBL
 {
     public interface IProductBL
     {
-        void AddProduct();
-        void UpdateProduct();
-        void DeleteProduct();
+        void AddProduct(Product product);
+        void UpdateProduct(Product product);
+        void DeleteProduct(int productId);
         List<Product> GetProducts();
-        Product GetProductById(int id);
+        Product GetProduct(int productId);
 
     }
 }

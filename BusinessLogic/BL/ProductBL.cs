@@ -1,42 +1,44 @@
 ﻿using BusinessLogic.IBL;
+using DAL.Data.IModels;
+using DAL.Data.Models;
 using DTO_Core.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLogic.BL
 {
     public class ProductBL : IProductBL
     {
-        public void AddProduct()
+        private readonly IProductRepository _productRepository;
+
+        public ProductBL(IProductRepository productRepository)
         {
-            var productRepository = new ProductRepository();
-            Validation data 
-
-
+            _productRepository = productRepository;
         }
 
-        public void DeleteProduct()
+        public void AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            _productRepository.AddProduct(product);
         }
 
-        public Product GetProductById(int id)
+        public void UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _productRepository.UpdateProduct(product);
+        }
+
+        public void DeleteProduct(int productId)
+        {
+            _productRepository.DeleteProduct(productId);
         }
 
         public List<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            return _productRepository.GetAllProducts();
         }
 
-        public void UpdateProduct()
+        public Product GetProduct(int productId)
         {
-            throw new NotImplementedException();
+            return _productRepository.GetProductById(productId);
         }
     }
 }

@@ -1,38 +1,45 @@
 ﻿using BusinessLogic.IBL;
+using DAL.Data.IModels;
+using DAL.Data.Models;
 using DTO_Core.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLogic.BL
 {
     public class CategoryBL : ICategoryBL
     {
-        public void AddCategory()
+        private readonly ICategoryRepository _categoryRepository;
+
+        public CategoryBL(ICategoryRepository categoryRepository)
         {
-            throw new NotImplementedException();
+            _categoryRepository = categoryRepository;
         }
 
-        public void DeleteCategory()
+        public void AddCategory(Category category)
         {
-            throw new NotImplementedException();
+            _categoryRepository.AddCategory(category);
+        }
+
+        public void UpdateCategory(Category category)
+        {
+            _categoryRepository.UpdateCategory(category);
+        }
+
+        public void DeleteCategory(int categoryId)
+        {
+            _categoryRepository.DeleteCategory(categoryId);
         }
 
         public List<Category> GetCategories()
         {
-            throw new NotImplementedException();
+            return _categoryRepository.GetAllCategories();
         }
 
-        public Category GetCategory(int id)
+        public Category GetCategory(int categoryId)
         {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateCategory()
-        {
-            throw new NotImplementedException();
+            return _categoryRepository.GetCategoryById(categoryId);
         }
     }
 }
+

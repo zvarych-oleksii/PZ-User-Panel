@@ -6,6 +6,7 @@ namespace DTO_Core.Models
     public class Cart
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CartId { get; set; }
 
         [ForeignKey("User")]
@@ -16,9 +17,9 @@ namespace DTO_Core.Models
 
         public int Quantity { get; set; }
 
-        public DateTime InsertTime { get; set; }
+        public DateTime InsertTime { get; set; } = DateTime.Now;
 
-        public DateTime UpdateTime { get; set; }
+        public DateTime UpdateTime { get; set; } = DateTime.Now;
 
         // Navigation properties
         public User User { get; set; }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF.ModelView
+namespace DAL.Data.Models
 {
-    internal class ProductDetailViewModel
+    internal class Repo
     {
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PZ_User_Panel_console.Data.Models;
+using DTO_Core.Models;
 
-namespace PZ_User_Panel_console.Context
+namespace DAL.Context
 {
     public class StoreDBContext: DbContext
     {
