@@ -1,12 +1,11 @@
-﻿using Avalonia.Metadata;
+﻿using BusinessLogic.IBL;
+using DTO_Core.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using Unity.Resolution;
+using System.Windows.Media;
 using Unity;
 using WPF.ViewModels;
-using DTO_Core.Models;
-using System.Windows.Media;
 
 namespace WPF.Windows
 {
@@ -21,10 +20,6 @@ namespace WPF.Windows
             InitializeComponent();
 
             productCollection = (CollectionViewSource)(Resources["ProductCollection"]);
-
-            // Set the DataContext to the provided ProductListViewMode
-
-            // Initialize UI elements or other setup logic here
         }
         private void DetailButton_Click(object sender, RoutedEventArgs e)
         {
@@ -51,27 +46,41 @@ namespace WPF.Windows
 
         private void BuyButton_Click(object sender, RoutedEventArgs e)
         {
-            //var button = sender as Button;
-            //if (button != null)
-            //{
-            //    var dataGrid = FindParent<DataGrid>(button);
-            //    if (dataGrid != null)
-            //    {
-            //        var selectedProduct = dataGrid.SelectedItem as YourProductClass;
+            var button = sender as Button;
+            if (button != null)
+            {
+                var dataGrid = FindParent<DataGrid>(button);
+                if (dataGrid != null)
+                {
+                    var selectedProduct = dataGrid.SelectedItem as Product;
 
-            //        // Now 'selectedProduct' holds the object in the selected row.
+                    // Now 'selectedProduct' holds the object in the selected row.
 
-            //        if (selectedProduct != null)
-            //        {
-            //            // Do something with the selected product (e.g., add to cart)
-            //            // Add your logic for buying the product here
-            //        }
-            //    }
-            //}
+                    if (selectedProduct != null)
+                    {
+                        ICartBL cartBLInstance = ((App)Application.Current).Container.Resolve<ICartBL>(); // You might need to adjust this based on how your ICartBL is registered in Unity
+                        var buyViewModel = new ProductBuyViewModel(selectedProduct, cartBLInstance);
+                        var productBuyWindow = new ProductBuy(buyViewModel);
+                        productBuyWindow.ShowDialog();
+                        productListViewModel.Update();
+                    }
+
+                }
+            }
         }
+        private void NavigateButton_Click(object sender, RoutedEventArgs e)
+        {
+            IUserBL userBL = ((App)Application.Current).Container.Resolve<IUserBL>();
+            ICartBL cartBL = ((App)Application.Current).Container.Resolve<ICartBL>();
 
-        // Helper method to find the parent of a specific type in the visual tree
-        private T FindParent<T>(DependencyObject child) where T : DependencyObject
+            var userDetailViewModel = new UserDetailViewModel(cartBL, userBL);
+            var userDetailWindow = new UserDetail(userDetailViewModel);
+            userDetailWindow.Show();
+            //var button = sender as Button;
+            //UserDetail userDetailWindow = ((App)Application.Current).Container.Resolve<UserDetail>();
+            //userDetailWindow.Show();
+        }
+         private T FindParent<T>(DependencyObject child) where T : DependencyObject
         {
             while (true)
             {

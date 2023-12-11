@@ -44,5 +44,14 @@ namespace BusinessLogic.BL
         {
             return _cartRepository.GetAllCarts();
         }
+
+        public bool CheckQuantity(Product product, int quantity)
+        {
+            if (quantity > 0 && quantity <= product.Quantity )
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

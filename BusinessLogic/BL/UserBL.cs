@@ -49,7 +49,7 @@ namespace BusinessLogic.BL
             return _userRepository.GetUserById(userId);
         }
 
-        public bool AuthUser(string username, string password)
+        public int AuthUser(string username, string password)
         {
             var user = _userRepository.GetUserByUsername(username);
 
@@ -59,10 +59,10 @@ namespace BusinessLogic.BL
                 string passToCheck = password + salt;
                 var check = BCrypt.Net.BCrypt.Verify(passToCheck, user.Password);
 
-                return check;
+                return user.UserId;
             }
 
-            return false;
+            return 0;
         }
 
         public string GenerateSalt(string username, string password)

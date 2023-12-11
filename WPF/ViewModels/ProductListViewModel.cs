@@ -1,8 +1,10 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using BusinessLogic.IBL;
 using DTO_Core.Models;
+using WPF.Windows;
 
 namespace WPF.ViewModels
 {
@@ -22,6 +24,7 @@ namespace WPF.ViewModels
 
         private IProductBL productBL;
         private ObservableCollection<Product> products;
+        public ICommand NavigateToUserDetailCommand { get; }
 
 
 
@@ -31,8 +34,6 @@ namespace WPF.ViewModels
                 OnPropertyChanged(nameof(ProductList));
             }
         }
-
-
 
         public ProductListViewModel(IProductBL productBL)
         {

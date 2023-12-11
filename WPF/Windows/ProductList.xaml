@@ -55,6 +55,8 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
+            
         </DataGrid>
+        <Button Content="Go to User Detail" Click="NavigateButton_Click" />
     </Grid>
 </Window>

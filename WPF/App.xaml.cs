@@ -70,6 +70,7 @@ namespace WPF
             // Register view models
             Container.RegisterType<ProductListViewModel>(new HierarchicalLifetimeManager());
             Container.RegisterType<LoginViewModel>(new HierarchicalLifetimeManager());
+            Container.RegisterType<ProductBuyViewModel>(new HierarchicalLifetimeManager());
             // Add other registrations as needed
         }
 

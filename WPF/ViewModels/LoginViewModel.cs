@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using WPF.Commands;
 using WPF.Interfaces;
+using WPF.Utilities;
 
 namespace WPF.ViewModels
 {
@@ -24,7 +25,14 @@ namespace WPF.ViewModels
 
         public bool Login()
         {
-            return userBL.AuthUser(Username, Password);
+            var userId = userBL.AuthUser(Username, Password);
+            if (userId != 0) 
+            {
+                UserContext.UserId = userId;
+                return true;
+            }
+            else
+            { return false; }
         }
 
         public string Username

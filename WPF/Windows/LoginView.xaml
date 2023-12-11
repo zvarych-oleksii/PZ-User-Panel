@@ -37,7 +37,7 @@
 
             <StackPanel VerticalAlignment="Center" Grid.Row="0">
                 <Image Source="../Images/movie-icon.png" Margin="10" Width="100" Height="100" />
-                <TextBlock Text="Movie Database" 
+                <TextBlock Text="Product shop" 
                            FontWeight="Light" 
                            FontSize="22" 
                            FontFamily="Helvetica"

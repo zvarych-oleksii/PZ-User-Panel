@@ -50,11 +50,6 @@ public class Program
             Price = 200,
         };
 
-        if (userBL.AuthUser("Josht", "password"))
-        {
-            Console.WriteLine("Auth");
-            Console.WriteLine(userBL.GetUsers());
-        }
 
         Cart cart = new Cart
         {

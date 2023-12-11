@@ -8,5 +8,6 @@ namespace BusinessLogic.IBL
         void DeleteCart(int cartId);
         void UpdateCart(Cart cart);
         List<Cart> GetAllCarts();
+        bool CheckQuantity(Product product, int quantity);
     }
 }

@@ -14,7 +14,7 @@ namespace BusinessLogic.IBL
         void DeleteUser(int userId);
         List<User> GetUsers();
         User GetUser(int id);
-        bool AuthUser(string username, string password);
+        int AuthUser(string username, string password);
         string GenerateSalt(string username, string password);
         string GetSalt(int userId);
     }
