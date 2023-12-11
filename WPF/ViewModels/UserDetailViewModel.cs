@@ -58,7 +58,7 @@ namespace WPF.ViewModels
         {
             this.cartBL = cartBL;
             _userName = userBL.GetUser(UserContext.UserId).UserName;
-            _cartTotal = 100;
+            _cartTotal = this.cartBL.GetCartTotalSumByUserId(UserContext.UserId);
             Update();
         }
 
@@ -71,7 +71,7 @@ namespace WPF.ViewModels
 
         public void Update()
         {
-            var carts = cartBL.GetAllCarts();
+            var carts = cartBL.GetUserCarts(UserContext.UserId);
             CartList = new ObservableCollection<Cart>(carts);
         }
     }

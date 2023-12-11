@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{7AC5DBD9-B24D-4AED-B6EE-45EF6BEFB658}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO-Core", "DTO-Core\DTO-Core.csproj", "{AB2D547F-0814-45A7-BACC-2BB305898118}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{58FCF654-F99A-4D7F-B332-9411264803EF}"
@@ -13,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLogic", "BusinessLo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF", "WPF\WPF.csproj", "{C6237150-7CE7-4482-9F08-49D24E47E5BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP", "ASP\ASP.csproj", "{8CB57ACE-316A-4DA4-BA29-5C21DC3BC01E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP", "ASP\ASP.csproj", "{8CB57ACE-316A-4DA4-BA29-5C21DC3BC01E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7AC5DBD9-B24D-4AED-B6EE-45EF6BEFB658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AC5DBD9-B24D-4AED-B6EE-45EF6BEFB658}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7AC5DBD9-B24D-4AED-B6EE-45EF6BEFB658}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AC5DBD9-B24D-4AED-B6EE-45EF6BEFB658}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB2D547F-0814-45A7-BACC-2BB305898118}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AB2D547F-0814-45A7-BACC-2BB305898118}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB2D547F-0814-45A7-BACC-2BB305898118}.Release|Any CPU.ActiveCfg = Release|Any CPU

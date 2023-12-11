@@ -53,5 +53,24 @@ namespace BusinessLogic.BL
             }
             return false;
         }
+
+        public decimal GetCartTotalSumByUserId(int userId)
+        {
+            var userCarts = _cartRepository.GetUserCarts(userId);
+            decimal totalSum = 0;
+
+            foreach (var cart in userCarts)
+            {
+                // Assuming Product has a Price property
+                totalSum += cart.Quantity * cart.Product.Price;
+            }
+
+            return totalSum;
+        }
+
+        public List<Cart> GetUserCarts(int userId)
+        {
+            return _cartRepository.GetUserCarts(userId);
+        }
     }
 }

@@ -9,5 +9,7 @@ namespace BusinessLogic.IBL
         void UpdateCart(Cart cart);
         List<Cart> GetAllCarts();
         bool CheckQuantity(Product product, int quantity);
+        decimal GetCartTotalSumByUserId(int userId);
+        List<Cart> GetUserCarts(int userId);
     }
 }
