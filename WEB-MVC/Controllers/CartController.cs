@@ -9,6 +9,7 @@ using DAL.Data.IModels;
 using BusinessLogic.BL;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WEB_MVC.Controllers
 {
@@ -60,6 +61,7 @@ namespace WEB_MVC.Controllers
         }
 
         // GET: CartController/Create
+        [Authorize(Roles = "User")]
         public ActionResult Create()
         {
             GetProductUserLists();
@@ -83,6 +85,7 @@ namespace WEB_MVC.Controllers
         }
 
         // GET: CartController/Edit/5
+        [Authorize(Roles = "User")]
         public ActionResult Edit(int id)
         {
             Cart cart = _cartBL.GetCartById(id);
@@ -111,6 +114,7 @@ namespace WEB_MVC.Controllers
         }
 
         // GET: CartController/Delete/5
+        [Authorize(Roles = "User")]
         public ActionResult Delete(int id)
         {
             Cart cart = _cartBL.GetCartById(id);
