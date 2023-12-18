@@ -11,11 +11,13 @@ namespace BusinessLogic.BL
     {
         private readonly ICartRepository _cartRepository;
         private readonly IProductRepository _productRepository;
+        private readonly IUserRepository _userRepository;
 
-        public CartBL(ICartRepository cartRepository, IProductRepository productRepository)
+        public CartBL(ICartRepository cartRepository, IProductRepository productRepository, IUserRepository userRepository)
         {
             _cartRepository = cartRepository;
             _productRepository = productRepository;
+            _userRepository = userRepository;
         }
 
       
@@ -23,6 +25,7 @@ namespace BusinessLogic.BL
         {
             int quantityToBuy = cart.Quantity;
             var produtId = cart.ProductId;
+
             Product product = _productRepository.GetProductById(produtId);
             int productQuantity = product.Quantity;
             product.Quantity = productQuantity - quantityToBuy;
@@ -32,11 +35,22 @@ namespace BusinessLogic.BL
 
         public void DeleteCart(int cartId)
         {
+            Cart cart = this.GetCartById(cartId);
+            var quantity = cart.Quantity;
+            Product product = _productRepository.GetProductById(cart.ProductId);
+            var productQuantity = product.Quantity;
+            product.Quantity = quantity + productQuantity;
             _cartRepository.DeleteCart(cartId);
         }
 
         public void UpdateCart(Cart cart)
         {
+            Cart old_cart = this.GetCartById(cart.CartId);
+            var diff = old_cart.Quantity - cart.Quantity;
+            Product product = _productRepository.GetProductById(cart.ProductId);
+            var productQuantity = product.Quantity;
+            product.Quantity = diff + productQuantity;
+            _productRepository.UpdateProduct(product);
             _cartRepository.UpdateCart(cart);
         }
 
@@ -71,6 +85,33 @@ namespace BusinessLogic.BL
         public List<Cart> GetUserCarts(int userId)
         {
             return _cartRepository.GetUserCarts(userId);
+        }
+
+        public Cart GetCartById(int cartId)
+        {
+            return _cartRepository.GetCartById(cartId);
+        }
+
+        public List<User> GetListOfUsers()
+        {
+            return _userRepository.GetAllUsers();
+        }
+
+        public List<Product> GetListOfProducts()
+        {
+            return _productRepository.GetAllProducts();
+        }
+
+        public Cart ASPAddCart(Cart cart)
+        {
+            int quantityToBuy = cart.Quantity;
+            var produtId = cart.ProductId;
+            Product product = _productRepository.GetProductById(produtId);
+            int productQuantity = product.Quantity;
+            product.Quantity = productQuantity - quantityToBuy;
+            _productRepository.UpdateProduct(product);
+            _cartRepository.AddCart(cart);
+            return cart;
         }
     }
 }

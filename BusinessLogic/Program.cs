@@ -32,7 +32,9 @@ public class Program
         var cartRepo = serviceProvider.GetRequiredService<CartRepository>();
         var productRepo = serviceProvider.GetRequiredService<ProductRepository>();
         var userRepo = serviceProvider.GetRequiredService<UserRepository>();
-        var userBL = serviceProvider.GetRequiredService<UserBL>(); // Fix the declaration here
+// Fix the declaration here
+
+        Console.WriteLine(userRepo.GetAllUsers());
 
         User user = new User
         {

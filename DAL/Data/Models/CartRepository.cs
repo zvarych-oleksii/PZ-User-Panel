@@ -1,6 +1,7 @@
 ﻿using DAL.Context;
 using DAL.Data.IModels;
 using DTO_Core.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DAL.Data.Models
 {
@@ -21,12 +22,18 @@ namespace DAL.Data.Models
 
         public Cart GetCartById(int cartId)
         {
-            return _dbContext.Cart.Find(cartId);
+            return _dbContext.Cart
+    .Include(c => c.User)
+    .Include(c => c.Product)
+    .FirstOrDefault(c => c.CartId == cartId);
         }
 
         public List<Cart> GetAllCarts()
         {
-            return _dbContext.Cart.ToList();
+            return _dbContext.Cart
+     .Include(c => c.User)
+     .Include(c => c.Product)
+     .ToList();
         }
 
         public void UpdateCart(Cart cart)

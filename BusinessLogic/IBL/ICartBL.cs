@@ -11,5 +11,9 @@ namespace BusinessLogic.IBL
         bool CheckQuantity(Product product, int quantity);
         decimal GetCartTotalSumByUserId(int userId);
         List<Cart> GetUserCarts(int userId);
+        Cart GetCartById(int cartId);
+        List<User> GetListOfUsers();
+        List<Product> GetListOfProducts();
+        Cart ASPAddCart(Cart cart);
     }
 }
